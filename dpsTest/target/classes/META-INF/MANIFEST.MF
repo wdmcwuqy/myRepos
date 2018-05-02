@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Premain-class: com.duanjiao.dpsTest.memory.MemorySizeHepler
+Built-By: Administrator
+Can-Redefine-Classes: false
+Build-Jdk: 1.8.0_144
+Boot-Class-Path: 
+Created-By: Maven Integration for Eclipse
+
