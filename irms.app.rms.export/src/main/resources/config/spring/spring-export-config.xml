@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+            http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+            http://www.springframework.org/schema/mvc 
+            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+     
+	<!-- 数据源定义,使用Apache DBCP 连接池@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	<bean id="exportDataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${export.jdbc.driver}" />
+		<property name="url" value="${export.jdbc.url}" />
+		<property name="username" value="${export.jdbc.username}" />
+		<property name="password" value="${export.jdbc.password}" />
+		<property name="initialSize" value="${export.jdbc.initialSize}" />
+		<property name="maxActive" value="${export.jdbc.maxActive}" />
+		<property name="minIdle" value="${export.jdbc.minIdle}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 是否自动回收超时连接 -->
+		<property name="removeAbandoned" value="true" />
+		<!-- 超时时间(以秒数为单位) -->
+		<property name="removeAbandonedTimeout" value="${export.jdbc.removeAbandonedTimeout:150}" />
+		<!-- 是否在自动回收超时连接的时候打印连接的超时错误 -->
+		<property name="logAbandoned" value="true" />
+
+		<!-- false : 空闲时是否验证, 若不通过断掉连接, 前提是空闲对象回收器开启状态 -->
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="true"/>
+		<property name="validationQuery" value="SELECT 'x' from dual" />
+
+		<!-- -1 : 以毫秒表示空闲对象回收器由运行间隔。值为负数时表示不运行空闲对象回收器 若需要回收, 该值最好小于 minEvictableIdleTimeMillis 
+			值 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${export.jdbc.timeBetweenEvictionRunsMillis:300000}" />
+
+		<!-- 1000*60*30 : 被空闲对象回收器回收前在池中保持空闲状态的最小时间, 毫秒表示 若需要回收, 该值最好小于DB中的 wait_timeout 
+			值 -->
+		<property name="minEvictableIdleTimeMillis" value="${export.jdbc.minEvictableIdleTimeMillis:320000}" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+		<!-- 注意：informix的事物级别一定要设置成1，READ_UNCOMMITTED -->
+		<property name="defaultTransactionIsolation" value="${export.jdbc.isolation}"></property>
+		<property name="filters" value="stat" />
+		<!-- <property name="proxyFilters"> <list> <ref bean="ConnectionFilter"/> 
+			</list> </property> -->
+	</bean>
+	
+</beans>
