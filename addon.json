@@ -1,0 +1,16 @@
+{
+  "name": "融媒体系统插件",
+  "id": "cm-sites-plus",
+  "version": "0.0.1",
+  "lastUpdate": "2020-05-12",
+  "maintainer": "wdmcwuqy@126.com",
+  "scripts": ["system-addon.js"],
+  "k8s": [],
+  "resources": [],
+  "isGlobal": false,
+  "info": {
+    "description": "融媒体系统自定义按钮插件",
+    "document": "",
+    "important": "自定义插件"
+  }
+}
