@@ -14,10 +14,6 @@ metadata:
     k8s.eip.work/layer: cloud
     k8s.eip.work/name: cloud-busybox
   name: cloud-busybox
-  namespace: cm-sites
-  resourceVersion: '11639962'
-  selfLink: /apis/apps/v1/namespaces/cm-sites/deployments/cloud-busybox
-  uid: 47a133ab-cff5-42dd-810a-04884e111b3d
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -48,8 +44,6 @@ spec:
           terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      terminationGracePeriodSeconds: 30
 status:
   availableReplicas: 1
   conditions:
