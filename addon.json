@@ -5,7 +5,7 @@
   "lastUpdate": "2020-05-12",
   "maintainer": "wdmcwuqy@126.com",
   "scripts": ["system-addon.js"],
-  "k8s": [],
+  "k8s": ["nginx.yaml"],
   "resources": [],
   "isGlobal": false,
   "info": {
