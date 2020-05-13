@@ -24,6 +24,6 @@ let podMonitor1 = {
   openMonitoringPage: openPodMonitor1
 }
 
-addon.nodes.push(podMonitor1)
+addon.containers.push(podMonitor1)
 
 window.EIP_MONITOR_ADDON_TO_ACTIVATE = addon
