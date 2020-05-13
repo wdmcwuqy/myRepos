@@ -6,8 +6,7 @@
   "maintainer": "wdmcwuqy@126.com",
   "scripts": ["system-addon.js"],
   "k8s": ["busybox.yaml"],
-  "resources": [],
-  "isGlobal": false,
+  "isGlobal": true,
   "info": {
     "description": "融媒体系统自定义按钮插件",
     "document": "",
